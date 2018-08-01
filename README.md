@@ -15,14 +15,17 @@ The object of the game is to earn as many points as possible by getting to the w
 1. Download or clone the repository to your computer.
 2. Open the index html in your browser.
 
-You can also play the game by clicking this link: 
+You can also play the game by clicking this link:
+
 https://codepen.io/MelissaFloresDavis/full/WKMZwV/
 
 ## Resources
 I am very grateful to the following developers for sharing their projects online. Their examples helped me to understand and get inspired for this project.
 
 http://fabiolavieyra.com/blog/arcade-game
+
 http://irene.marin.cat/udacity/project3/index.html
+
 https://medium.com/letsboot/classic-arcade-game-with-js-5687e4125169
 
 
