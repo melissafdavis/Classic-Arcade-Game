@@ -1,25 +1,26 @@
 var points = 0;
 document.querySelector('.score').innerHTML = `Score : ${points}`;
-function resetPoints (){
-  points = 0;
-  document.querySelector('.score').innerHTML = `Score : ${points}`;
+
+function resetPoints() {
+    points = 0;
+    document.querySelector('.score').innerHTML = `Score : ${points}`;
 }
 
 // Enemies our player must avoid
-var Enemy = function (x, y, speed) {
+var Enemy = function(x, y, speed) {
 
     // The following variables are used to determine the x and y axis and speed of the enemy
     this.x = x;
     this.y = y;
     this.speed = speed;
 
-    // The image of the enemy of cockroach that is added to the playing field
+    // The image of the enemy that is added to the playing field
     this.sprite = 'images/enemy-bug.png';
 };
 
 // Update the enemy's position, required method for game
 // Parameter: dt, a time delta between ticks
-Enemy.prototype.update = function (dt) {
+Enemy.prototype.update = function(dt) {
 
     // Multiplies the speed by the dt parameter on the x axis
     this.x += this.speed * dt;
@@ -39,21 +40,21 @@ Enemy.prototype.update = function (dt) {
         player.y = 405;
 
         swal({
-          title: "Oh no!",
-          text: "The bug got you",
-          icon: "error",
-          buttons: ['Bye bye', 'Play again'],
-          dangerMode: false,
-        })
-        .then((playAgain) => {
-          if (playAgain) {
-              resetPoints();
+                title: "Oh no!",
+                text: "The bug got you",
+                icon: "error",
+                buttons: ['Bye bye', 'Play again'],
+                dangerMode: false,
+            })
+            .then((playAgain) => {
+                if (playAgain) {
+                    resetPoints();
 
-  } else {
-    swal("Thanks for playing!");
-    resetPoints();
-  }
-});
+                } else {
+                    swal("Thanks for playing!");
+                    resetPoints();
+                }
+            });
     };
 };
 
@@ -63,22 +64,21 @@ Enemy.prototype.render = function() {
 };
 
 // Now write your own player class
-var Player = function(x,y){
-  this.x = x;
-  this.y = y;
-  this.player = 'images/char-pink-girl.png';
+var Player = function(x, y) {
+    this.x = x;
+    this.y = y;
+    this.player = 'images/char-pink-girl.png';
 }
 // Player class requires an update() method
-Player.prototype.update = function (dt) {
-};
+Player.prototype.update = function(dt) {};
 
 // Player class requires a render() method
-Player.prototype.render = function (){
+Player.prototype.render = function() {
     ctx.drawImage(Resources.get(this.player), this.x, this.y);
 };
 
 // Player class requires a handleInput() method.
-Player.prototype.handleInput = function (keyPress) {
+Player.prototype.handleInput = function(keyPress) {
 
     // Enables user on left arrow key to move left on the x axis by 102
     // Also enables user not to go off the game tiles on the left side
@@ -105,12 +105,12 @@ Player.prototype.handleInput = function (keyPress) {
 
     // Once the user reaches the top of the page; the water, the user is
     // Instantly reset to the starting position and award a point
-    if (this.y <  20) {
+    if (this.y < 20) {
         setTimeout(() => {
             this.x = 202;
             this.y = 405;
         }, 100);
-        points ++;
+        points++;
         document.querySelector('.score').innerHTML = `Score : ${points}`;
     };
 };
@@ -121,7 +121,7 @@ var allEnemies = [];
 // Place the player object in a variable called player
 var enemyLocation = [63, 147, 230];
 
-enemyLocation.forEach(function (locationY) {
+enemyLocation.forEach(function(locationY) {
     enemy = new Enemy(0, locationY, 200);
     allEnemies.push(enemy);
 });
